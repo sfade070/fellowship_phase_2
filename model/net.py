@@ -239,12 +239,11 @@ def _resnet(arch, block, layers, pretrained, progress, **kwargs):
         model.load_state_dict(state_dict)
 
         for param in model.parameters():
-            param.requires_grad = False
+            param.requires_grad = True
 
         num_ftrs = model.fc.in_features
         model.fc = nn.Linear(num_ftrs, 7)
     return model
-
 
 def resnet18(pretrained=True, progress=True, **kwargs):
     r"""ResNet-18 model from

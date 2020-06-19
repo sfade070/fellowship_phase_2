@@ -10,7 +10,7 @@ import utils
 
 PYTHON = sys.executable
 parser = argparse.ArgumentParser()
-parser.add_argument('--parent_dir', default='experiments/learning_rate',
+parser.add_argument('--parent_dir', default='experiments/dropout_rate',
                     help='Directory containing params.json')
 parser.add_argument('--data_dir', default='data/data_new_2', help="Directory containing the dataset")
 
@@ -48,11 +48,19 @@ if __name__ == "__main__":
 
     # Perform hypersearch over one parameter
     learning_rates = [1e-4, 1e-3, 1e-2]
+    dropout_rates = [0.3,0.4,0.5,0.6,0.7,0.8,0.9] 
 
-    for learning_rate in learning_rates:
-        # Modify the relevant parameter in params
-        params.learning_rate = learning_rate
+    # for learning_rate in learning_rates:
+    #     # Modify the relevant parameter in params
+    #     params.learning_rate = learning_rate
 
-        # Launch job (name has to be unique)
-        job_name = "learning_rate_{}".format(learning_rate)
-        launch_training_job(args.parent_dir, args.data_dir, job_name, params)
+    #     # Launch job (name has to be unique)
+    #     job_name = "learning_rate_{}".format(learning_rate)
+    #     launch_training_job(args.parent_dir, args.data_dir, job_name, params)
+    for dropout_rate in dropout_rates:
+      # Modify the relevant parameter in paramss
+      params.dropout_rate = dropout_rate
+
+      # Launch job (name has to be unique)
+      job_name = "dropout_rate_{}".format(dropout_rate)
+      launch_training_job(args.parent_dir, args.data_dir, job_name, params) 

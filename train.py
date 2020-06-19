@@ -207,8 +207,8 @@ if __name__ == '__main__':
     #model.fc = nn.Linear(num_ftrs, 7).cuda()
     #model.fc = nn.LogSoftmax(model.fc).cuda()
    
-    #model = net.resnet50(pretrained=True, progress=True).cuda()
-    model = net.Net(params).cuda() if params.cuda else net.Net(params)
+    model = net.resnet50(pretrained=True, progress=True).cuda()
+    #model = net.Net(params).cuda() if params.cuda else net.Net(params)
 
     optimizer = optim.Adam(model.parameters(), lr=params.learning_rate)
 
